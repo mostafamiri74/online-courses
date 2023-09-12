@@ -1,0 +1,51 @@
+/* FONTS */
+
+@font-face {
+  font-family: IRANYekanX;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/woff/IRANYekanX-Regular.woff") format("woff"),
+    url("../../assets/fonts/woff2/IRANYekanX-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: IRANYekanXBold;
+  font-style: normal;
+  font-weight: bold;
+  src: url("../../assets/fonts/woff/IRANYekanX-Bold.woff") format("woff"),
+    url("../../assets/fonts/woff2/IRANYekanX-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: IRANYekanXNumber;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/woff/IRANYekanXFaNum-Regular.woff")
+      format("woff"),
+    url("../../assets/fonts/woff2/IRANYekanXFaNum-Regular.woff2")
+      format("woff2");
+}
+
+body {
+  font-family: IRANYekanX !important;
+  letter-spacing: -0.4px;
+  word-spacing: -2px;
+}
+
+span,
+h1,
+h2,
+h3,
+h4,
+input,
+button,
+select,
+textarea {
+  font-family: IRANYekanX !important;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}

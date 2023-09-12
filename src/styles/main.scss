@@ -1,0 +1,41 @@
+@import "./abstracts/colors";
+
+@import "./base/typography";
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "iranyekan";
+  word-spacing: 0.2rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  overflow-x: hidden;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none !important;
+  color: #000;
+  cursor: pointer;
+}
+
+fa-icon {
+  color: $secondary;
+}
+
+button {
+  background: $primary;
+}
+
+.pi {
+  font-family: "primeicons" !important;
+  margin-left: 0.6rem;
+}

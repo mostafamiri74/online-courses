@@ -1,0 +1,60 @@
+<section
+  class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full"
+>
+  <form [formGroup]="form">
+    <div class="flex card justify-content-center">
+      <p-card [style]="{ width: '450px' }">
+        <ng-template pTemplate="header">
+          <img
+            src="/assets/images/auth/logo-icon.svg"
+            alt="Card"
+            width="60"
+            height="60"
+          />
+          <span class="tw-block tw-text-center tw-opacity-75"
+            >{{ formType === "login" ? "ورود" : "ثبت نام" }} در سون لرن</span
+          >
+        </ng-template>
+        <div
+          class="tw-flex tw-flex-col card tw-justify-center tw-items-center tw-gap-4"
+        >
+          <input
+            *ngIf="formType === 'signup'"
+            type="text"
+            pInputText
+            formControlName="userName"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="نام کامل شما"
+          />
+          <input
+            type="email"
+            pInputText
+            formControlName="email"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="ایمیل شما"
+          />
+          <input
+            type="password"
+            pInputText
+            formControlName="password"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="رمز عبور"
+          />
+        </div>
+        <ng-template pTemplate="footer">
+          <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">
+            <p-button
+              (click)="onLoginOrSignup()"
+              [label]="formType === 'login' ? 'ورود' : 'ثبت نام'"
+              [disabled]="!this.form.valid"
+              styleClass="p-button"
+            ></p-button>
+            <span (click)="onToggleForm()" class="tw-cursor-pointer">{{
+              formType === "login" ? "ثبت نام" : "ورود"
+            }}</span>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </form>
+</section>

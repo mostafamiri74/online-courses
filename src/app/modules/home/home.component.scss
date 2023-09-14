@@ -4,18 +4,36 @@
 }
 
 ::ng-deep {
-  .p-menubar .p-menubar-custom,
-  .p-menubar .p-menubar-end {
+  .p-megamenu-horizontal .p-megamenu-end {
     margin-left: unset !important;
     flex-grow: 1;
   }
 
-  .p-menubar {
+  .p-megamenu {
+    width: 100%;
+    display: flex;
     background: #f7f7f7;
     border: none;
   }
 
   .p-menuitem-text {
     font-size: 1.1rem;
+  }
+
+  .p-megamenu .p-megamenu-panel {
+    border-radius: 0.4rem;
+    padding: 1rem;
+  }
+
+  .p-megamenu-col-4 {
+    padding: 1.6rem !important;
+  }
+
+  .p-component {
+    font-family: "IRANYekanX";
+  }
+
+  button[label="پروفایل"] .pi {
+    color: white;
   }
 }

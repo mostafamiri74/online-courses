@@ -37,5 +37,36 @@ button {
 
 .pi {
   font-family: "primeicons" !important;
+  color: $secondary;
   margin-left: 0.6rem;
 }
+
+button {
+  background-color: $primary !important;
+}
+
+.p-button .p-button-icon-right {
+  margin: 0 0.5rem 0 0;
+}
+
+.p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-icon {
+  color: #e15c43 !important;
+}
+
+// .p-menu
+//   .p-menuitem:not(.p-highlight):not(.p-disabled)
+//   > .p-menuitem-content:hover
+//   .p-menuitem-link
+//   .p-menuitem-icon,
+// .p-menu
+//   .p-menuitem:not(.p-highlight):not(.p-disabled)
+//   > .p-menuitem-content:hover
+//   .p-menuitem-link
+//   .p-submenu-icon,
+// .p-menu
+//   .p-menuitem:not(.p-highlight):not(.p-disabled)
+//   > .p-menuitem-content:hover
+//   .p-menuitem-link
+//   .p-menuitem-icon {
+//   color: #e15c43;
+// }

@@ -1,5 +1,5 @@
 <div class="tw-container tw-mx-auto">
-  <p-menubar [model]="items" class="tw-py-6 tw-block">
+  <p-megaMenu [model]="items" class="tw-flex tw-py-6">
     <ng-template pTemplate="start" class="tw-text-3xl">
       <img
         src="https://primefaces.org/cdn/primeng/images/primeng.svg"
@@ -15,12 +15,13 @@
           pButton
           type="button"
           (click)="menu.toggle($event)"
-          icon="pi pi-bars"
+          icon="pi pi-angle-down"
+          iconPos="right"
           label="پروفایل"
         ></button>
       </div>
     </ng-template>
-  </p-menubar>
+  </p-megaMenu>
 
   <section class="tw-pt-6 tw-flex">
     <div class="tw-w-1/2">
@@ -32,7 +33,7 @@
         کنار دانشجو است.
       </p>
 
-      <div class="tw-flex tw-justify-around">
+      <div class="tw-flex tw-justify-around tw-font-bold">
         <div class="tw-flex tw-flex-col tw-items-center">
           <fa-icon [icon]="faUser" class="tw-text-4xl tw-mb-3"></fa-icon>
           ۱۲ دوره

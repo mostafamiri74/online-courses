@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-import { ButtonModule } from 'primeng/button';
-import { MenubarModule } from 'primeng/menubar';
-import { MenuModule } from 'primeng/menu';
+import { PrimengModule } from './primeng/primeng.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
-  imports: [ButtonModule, MenubarModule, MenuModule],
-  exports: [ButtonModule, MenubarModule, MenuModule],
+  imports: [PrimengModule, HttpClientModule, ReactiveFormsModule],
+  exports: [PrimengModule, HttpClientModule, ReactiveFormsModule],
 })
 export class SharedModule {}

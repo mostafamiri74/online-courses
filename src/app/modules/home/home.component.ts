@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MegaMenuItem, MenuItem } from 'primeng/api';
 import {
   faUser,
   faClock,
@@ -18,7 +18,7 @@ export class HomeComponent {
   faCircleUser = faCircleUser;
   faNewspaper = faNewspaper;
 
-  items: MenuItem[] | undefined;
+  items: MegaMenuItem[] | undefined;
   profileItems: MenuItem[] | undefined;
 
   ngOnInit() {
@@ -26,31 +26,43 @@ export class HomeComponent {
       {
         label: 'دوره ها',
         items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'Bookmark',
-                icon: 'pi pi-fw pi-bookmark',
-              },
-              {
-                label: 'Video',
-                icon: 'pi pi-fw pi-video',
-              },
-            ],
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash',
-          },
-          {
-            separator: true,
-          },
-          {
-            label: 'Export',
-            icon: 'pi pi-fw pi-external-link',
-          },
+          [
+            {
+              label: 'طراحی وب',
+              items: [
+                { label: 'آموزش HTML' },
+                { label: 'آموزش CSS' },
+                { label: 'آموزش بوت استرپ' },
+                { label: 'آموزش جاوااسکریپت' },
+                { label: 'آموزش انگولار' },
+                { label: 'آموزش ری اکت' },
+                { label: 'آموزش ویو' },
+              ],
+            },
+          ],
+          [
+            {
+              label: 'سخت افزار',
+              items: [{ label: 'اسمبل کامپویتر' }, { label: 'تعمیر قطعات' }],
+            },
+            {
+              label: 'مهندسی داده',
+              items: [
+                { label: 'جمع آوری داده ها' },
+                { label: 'تحلیل داده ها' },
+              ],
+            },
+          ],
+          [
+            {
+              label: 'برنامه نویسی اندروید',
+              items: [{ label: 'کاتلین' }, { label: 'فلاتر' }],
+            },
+            {
+              label: 'سخت افزار موبایل',
+              items: [{ label: 'عیب یابی' }, { label: 'تعمیر قطعات' }],
+            },
+          ],
         ],
       },
       {

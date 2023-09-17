@@ -6,6 +6,8 @@ import {
   faCircleUser,
   faNewspaper,
 } from '@fortawesome/free-regular-svg-icons';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +22,8 @@ export class HomeComponent {
 
   items: MegaMenuItem[] | undefined;
   profileItems: MenuItem[] | undefined;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.items = [
@@ -79,21 +83,31 @@ export class HomeComponent {
           {
             label: 'داشبورد',
             icon: 'pi pi-chart-bar',
+            routerLink: ['/panel/dashboard'],
           },
           {
             label: 'دوره های من',
             icon: 'pi pi-save',
+            routerLink: ['/panel/my-course'],
           },
           {
             label: 'اطلاعات کاربری',
             icon: 'pi pi-user',
+            routerLink: ['/panel/profile'],
           },
           {
             label: 'خروج',
-            icon: 'pi pi-sign-out',
+            command: () => {
+              this.logout();
+            },
           },
         ],
       },
     ];
+  }
+
+  private logout() {
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 }

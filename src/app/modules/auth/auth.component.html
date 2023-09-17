@@ -26,6 +26,19 @@
             class="tw-w-full tw-rounded-xl tw-text-center"
             placeholder="نام کامل شما"
           />
+          <div
+            *ngIf="
+              form.controls['userName']?.invalid &&
+              (form.controls['userName']?.dirty ||
+                form.controls['userName']?.touched)
+            "
+            class="p-error"
+          >
+            <ng-container *ngIf="userName?.errors?.['required']" class="p-error"
+              >لطفا نام کاربری خود را وارد کنید.</ng-container
+            >
+          </div>
+
           <input
             type="email"
             pInputText
@@ -33,6 +46,21 @@
             class="tw-w-full tw-rounded-xl tw-text-center"
             placeholder="ایمیل شما"
           />
+          <div
+            *ngIf="
+              form.controls['email'].invalid &&
+              (form.controls['email'].dirty || form.controls['email'].touched)
+            "
+            class="p-error"
+          >
+            <ng-container *ngIf="email?.errors?.['required']">
+              لطفا ایمیل خود را وارد کنید.
+            </ng-container>
+            <ng-container *ngIf="email?.errors?.['email']">
+              آدرس ایمیل نوشته شده نامعتبر می باشد.
+            </ng-container>
+          </div>
+
           <input
             type="password"
             pInputText
@@ -40,6 +68,21 @@
             class="tw-w-full tw-rounded-xl tw-text-center"
             placeholder="رمز عبور"
           />
+          <div
+            *ngIf="
+              form.controls['password'].invalid &&
+              (form.controls['password'].dirty ||
+                form.controls['password'].touched)
+            "
+            class="p-error"
+          >
+            <ng-container *ngIf="password?.errors?.['required']">
+              لطفا رمز خود را وارد کنید.
+            </ng-container>
+            <ng-container *ngIf="password?.errors?.['minLength']">
+              رمز وارد شده باید بیشتر از ۶ کاراکتر باشد.
+            </ng-container>
+          </div>
         </div>
         <ng-template pTemplate="footer">
           <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">

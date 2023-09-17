@@ -6,6 +6,8 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuModule } from 'primeng/menu';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
+import { MessagesModule } from 'primeng/messages';
+import { ChartModule } from 'primeng/chart';
 
 const modules = [
   MegaMenuModule,
@@ -14,6 +16,8 @@ const modules = [
   MenuModule,
   CardModule,
   InputTextModule,
+  MessagesModule,
+  ChartModule,
 ];
 
 @NgModule({

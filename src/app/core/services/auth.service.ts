@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UserModel } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private endPoint = `test/`;
+  private currentUserSubject!: BehaviorSubject<UserModel>;
 
   constructor(private http: HttpClient) {}
 
@@ -16,5 +18,10 @@ export class AuthService {
 
   public login(userLoginInfo: any): Observable<any> {
     return this.http.post<any>(this.endPoint + 'login', userLoginInfo);
+  }
+
+  public logout(): void {
+    localStorage.clear();
+    // this.currentUserSubject.next({} as UserModel);
   }
 }

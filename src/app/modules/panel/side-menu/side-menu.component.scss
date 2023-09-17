@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  width: fit-content;
+}
+
+::ng-deep {
+  .p-menu {
+    width: 14rem;
+  }
+
+  p-menu .p-menu.ng-trigger {
+    height: 100vh;
+  }
+
+  ul.p-menu-list li {
+    margin: 1.5rem 0;
+
+    span.p-menuitem-text {
+      margin: 0 0.2rem;
+    }
+  }
+}

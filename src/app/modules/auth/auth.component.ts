@@ -37,13 +37,25 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  get userName() {
+    return this.form.get('userName');
+  }
+
+  get email() {
+    return this.form.get('email');
+  }
+
+  get password() {
+    return this.form.get('password');
+  }
+
   public onToggleForm(): void {
     if (this.formType === 'login') {
       this.formType = 'signup';
 
       this.form.addControl(
         'userName',
-        new FormControl('', [Validators.required, Validators.minLength(6)])
+        new FormControl('', [Validators.required])
       );
     } else {
       this.formType = 'login';

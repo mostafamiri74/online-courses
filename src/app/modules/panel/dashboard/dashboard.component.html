@@ -1,0 +1,87 @@
+<div class="grid">
+  <div class="col-12 lg:col-6 xl:col-3 tw-p-4">
+    <p-card class="mb-0 card">
+      <div class="flex mb-3 justify-content-between">
+        <div>
+          <span class="block mb-3 font-medium text-500"
+            >دوره های ثبت نام شده</span
+          >
+          <div class="text-xl font-medium text-900">۱۲</div>
+        </div>
+        <div
+          class="flex bg-blue-100 align-items-center justify-content-center border-round"
+          [ngStyle]="{ width: '2.5rem', height: '2.5rem' }"
+        >
+          <i class="text-xl text-blue-500 pi pi-shopping-cart"></i>
+        </div>
+      </div>
+      <span class="font-medium text-green-500"></span>
+      <span class="text-500"></span>
+    </p-card>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3 tw-p-4">
+    <p-card class="mb-0 card">
+      <div class="flex mb-3 justify-content-between">
+        <div>
+          <span class="block mb-3 font-medium text-500">سوال پرسیده شده</span>
+          <div class="text-xl font-medium text-900">۳</div>
+        </div>
+        <div
+          class="flex bg-orange-100 align-items-center justify-content-center border-round"
+          [ngStyle]="{ width: '2.5rem', height: '2.5rem' }"
+        >
+          <i class="text-xl text-orange-500 pi pi-map-marker"></i>
+        </div>
+      </div>
+      <span class="font-medium text-green-500"></span>
+      <span class="text-500"></span>
+    </p-card>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3 tw-p-4">
+    <p-card class="mb-0 card">
+      <div class="flex mb-3 justify-content-between">
+        <div>
+          <span class="block mb-3 font-medium text-500">نظر مطرح شده</span>
+          <div class="text-xl font-medium text-900">۵</div>
+        </div>
+        <div
+          class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+          [ngStyle]="{ width: '2.5rem', height: '2.5rem' }"
+        >
+          <i class="text-xl pi pi-inbox text-cyan-500"></i>
+        </div>
+      </div>
+      <span class="font-medium text-green-500"></span>
+      <span class="text-500"></span>
+    </p-card>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3 tw-p-4">
+    <p-card class="mb-0 card">
+      <div class="flex mb-3 justify-content-between">
+        <div>
+          <span class="block mb-3 font-medium text-500">عضویت در سون لرن</span>
+          <div class="text-xl font-medium text-900">۱۹۵ روز</div>
+        </div>
+        <div
+          class="flex bg-purple-100 align-items-center justify-content-center border-round"
+          [ngStyle]="{ width: '2.5rem', height: '2.5rem' }"
+        >
+          <i class="text-xl text-purple-500 pi pi-comment"></i>
+        </div>
+      </div>
+      <span class="font-medium text-green-500"> </span>
+      <span class="text-500"></span>
+    </p-card>
+  </div>
+
+  <div class="col-12 xl:col-6 tw-p-4">
+    <p-card class="card">
+      <h5>Sales Overview</h5>
+      <p-chart
+        type="line"
+        [data]="chartData"
+        [options]="chartOptions"
+      ></p-chart>
+    </p-card>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+:host ::ng-deep {
+  .p-card.p-component {
+    border-radius: 0.5rem;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  .p-card .p-card-title {
+    font-size: 1rem;
+  }
+
+  .p-progressbar {
+    height: 18px;
+    border-radius: 1rem;
+    font-size: 15px;
+  }
+
+  .p-card .p-card-body {
+    padding: 1.2rem 1.4rem;
+  }
+}

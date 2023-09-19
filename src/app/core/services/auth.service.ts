@@ -24,4 +24,10 @@ export class AuthService {
     localStorage.clear();
     // this.currentUserSubject.next({} as UserModel);
   }
+
+  
+  public get currentUserValue(): UserModel {
+    return this.currentUserSubject.value;
+  }
+
 }

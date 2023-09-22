@@ -1,1 +1,79 @@
-<p>profile works!</p>
+<section
+  class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full"
+>
+  <form [formGroup]="form">
+    <div class="flex card justify-content-center">
+      <p-card [style]="{ width: '450px' }">
+        <ng-template pTemplate="header">
+          <img
+            src="/assets/images/auth/logo-icon.svg"
+            alt="Card"
+            width="60"
+            height="60"
+          />
+          <span class="tw-block tw-text-center tw-opacity-75"
+            >ورود اطلاعات در سون لرن</span
+          >
+        </ng-template>
+        <div
+          class="tw-flex tw-flex-col card tw-justify-center tw-items-center tw-gap-4"
+        >
+          <input
+            type="email"
+            pInputText
+            formControlName="email"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="ایمیل شما"
+          />
+          <div
+            *ngIf="
+              form.controls['email'].invalid &&
+              (form.controls['email'].dirty || form.controls['email'].touched)
+            "
+            class="p-error"
+          >
+            <ng-container *ngIf="email?.errors?.['required']">
+              لطفا ایمیل خود را وارد کنید.
+            </ng-container>
+            <ng-container *ngIf="email?.errors?.['email']">
+              آدرس ایمیل نوشته شده نامعتبر می باشد.
+            </ng-container>
+          </div>
+
+          <input
+            type="password"
+            pInputText
+            formControlName="password"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="رمز عبور"
+          />
+          <div
+            *ngIf="
+              form.controls['password'].invalid &&
+              (form.controls['password'].dirty ||
+                form.controls['password'].touched)
+            "
+            class="p-error"
+          >
+            <ng-container *ngIf="password?.errors?.['required']">
+              لطفا رمز خود را وارد کنید.
+            </ng-container>
+            <ng-container *ngIf="password?.errors?.['minLength']">
+              رمز وارد شده باید بیشتر از ۶ کاراکتر باشد.
+            </ng-container>
+          </div>
+        </div>
+        <ng-template pTemplate="footer">
+          <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">
+            <p-button
+              (click)="onLoginOrSignup()"
+              label="ذخیره"
+              [disabled]="!this.form.valid"
+              styleClass="p-button"
+            ></p-button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </form>
+</section>

@@ -8,6 +8,8 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Observable } from 'rxjs';
+import { UserModel } from 'src/app/core/models/user.interface';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +24,8 @@ export class HomeComponent {
 
   items: MegaMenuItem[] | undefined;
   profileItems: MenuItem[] | undefined;
+
+  currentUserName: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -104,10 +108,16 @@ export class HomeComponent {
         ],
       },
     ];
+
+    this.getCurrentUser();
+  }
+
+  private getCurrentUser() {
+    this.currentUserName = this.authService.currentUserName;
   }
 
   private logout() {
     this.authService.logout();
-    this.router.navigate(['']);
+    this.getCurrentUser();
   }
 }

@@ -5,7 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserModel } from 'src/app/core/models/user.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -18,9 +19,10 @@ export class AuthComponent implements OnInit {
   formType: string = 'login';
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -67,14 +69,35 @@ export class AuthComponent implements OnInit {
   }
 
   public onLoginOrSignup(): void {
-    if (this.formType === 'login') {
-      this.authService.login(this.form.value).subscribe((res) => {
+    this.formType === 'login' ? this.login() : this.signup();
+  }
+
+  private login(): void {
+    this.authService.login(this.form.value).subscribe({
+      next: (res) => {
+        this.authService.setUser(res);
+        const params = this.route.snapshot.queryParams;
+
+        if (params['redirectURL']) {
+          this.router.navigate(['/'], {
+            queryParams: { redirectURL: params['redirectURL'] },
+          });
+        } else {
+          this.router.navigate(['home']);
+        }
+
         alert('login success');
-      });
-    } else {
-      this.authService.signup(this.form.value).subscribe((res) => {
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  private signup(): void {
+    this.authService.signup(this.form.value).subscribe({
+      next: (res) => {
         alert('signup success');
-      });
-    }
+      },
+      error: (error) => console.log(error),
+    });
   }
 }

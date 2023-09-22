@@ -1,6 +1,5 @@
 export interface UserModel {
-  name?: string;
-  token: string;
+  userName: string;
   accessToken: string;
   refreshToken: string;
 }

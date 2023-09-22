@@ -10,17 +10,22 @@
     <ng-template pTemplate="end">
       <!-- <input type="text" pInputText placeholder="Search" class="w-full" /> -->
       <div class="tw-text-end">
-        <p-button label="ورود" routerLink="/auth"></p-button>
+        <ng-container *ngIf="currentUserName; else loginButton">
+          <p-menu #menu [model]="profileItems" [popup]="true"></p-menu>
 
-        <p-menu #menu [model]="profileItems" [popup]="true"></p-menu>
-        <button
-          pButton
-          type="button"
-          (click)="menu.toggle($event)"
-          icon="pi pi-angle-down"
-          iconPos="right"
-          label="پروفایل"
-        ></button>
+          <button
+            pButton
+            type="button"
+            (click)="menu.toggle($event)"
+            icon="pi pi-angle-down"
+            iconPos="right"
+            [label]="currentUserName"
+          ></button>
+        </ng-container>
+
+        <ng-template #loginButton>
+          <p-button label="ورود" routerLink="/auth"></p-button>
+        </ng-template>
       </div>
     </ng-template>
   </p-megaMenu>

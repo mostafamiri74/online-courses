@@ -1,0 +1,11 @@
+:host ::ng-deep {
+  .p-card-header img {
+    width: 60px;
+    margin: 0 auto;
+  }
+
+  .p-card.p-component {
+    border-radius: 1.5rem;
+    padding: 25px 50px;
+  }
+}

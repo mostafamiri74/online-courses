@@ -10,9 +10,10 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CourseComponent } from './modules/course/course.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, CourseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

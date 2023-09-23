@@ -1,29 +1,17 @@
 <section
   class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full"
 >
-  <form [formGroup]="form">
-    <div class="flex card justify-content-center">
+  <form [formGroup]="form" class="tw-flex tw-gap-9">
+    <div class="card">
       <p-card [style]="{ width: '450px' }">
-        <ng-template pTemplate="header">
-          <img
-            src="/assets/images/auth/logo-icon.svg"
-            alt="Card"
-            width="60"
-            height="60"
-          />
-          <span class="tw-block tw-text-center tw-opacity-75"
-            >ورود اطلاعات در سون لرن</span
-          >
-        </ng-template>
-        <div
-          class="tw-flex tw-flex-col card tw-justify-center tw-items-center tw-gap-4"
-        >
+        <div class="tw-flex tw-flex-col card tw-justify-center tw-gap-4">
+          <label htmlFor="email">ایمیل</label>
           <input
             type="email"
             pInputText
             formControlName="email"
             class="tw-w-full tw-rounded-xl tw-text-center"
-            placeholder="ایمیل شما"
+            placeholder="mostafamiri12345@gmail.com"
           />
           <div
             *ngIf="
@@ -40,19 +28,16 @@
             </ng-container>
           </div>
 
+          <label htmlFor="password">رمز عبور جدید</label>
           <input
             type="password"
             pInputText
             formControlName="password"
             class="tw-w-full tw-rounded-xl tw-text-center"
-            placeholder="رمز عبور"
+            placeholder="رمز عبور جدید"
           />
           <div
-            *ngIf="
-              form.controls['password'].invalid &&
-              (form.controls['password'].dirty ||
-                form.controls['password'].touched)
-            "
+            *ngIf="password!.invalid && (password!.dirty || password!.touched)"
             class="p-error"
           >
             <ng-container *ngIf="password?.errors?.['required']">
@@ -62,6 +47,81 @@
               رمز وارد شده باید بیشتر از ۶ کاراکتر باشد.
             </ng-container>
           </div>
+
+          <label htmlFor="repeatPassword">تکرار رمز عبور</label>
+          <input
+            type="password"
+            pInputText
+            formControlName="repeatPassword"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="رمز عبور جدید"
+          />
+          <div
+            *ngIf="
+              repeatPassword!.invalid &&
+              (repeatPassword!.dirty || repeatPassword!.touched)
+            "
+            class="p-error"
+          >
+            <ng-container
+              *ngIf="repeatPassword?.errors?.['confirmedValidator']"
+            >
+              تکرار رمز عبور با رمز عبور مطابقت ندارد
+            </ng-container>
+          </div>
+
+          <label htmlFor="mobileNumber">شماره موبایل</label>
+          <input
+            type="tel"
+            pInputText
+            formControlName="mobileNumber"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="شماره موبایل"
+          />
+          <div
+            *ngIf="
+              mobileNumber!.invalid &&
+              (mobileNumber!.dirty || mobileNumber!.touched)
+            "
+            class="p-error"
+          >
+            <ng-container *ngIf="mobileNumber?.errors?.['pattern']">
+              شماره همراه وارد شده معتبر نمی باشد
+            </ng-container>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="card">
+      <p-card [style]="{ width: '450px', height: '493px' }">
+        <div class="tw-flex tw-flex-col card tw-justify-center tw-gap-4">
+          <label htmlFor="name">نام</label>
+          <input
+            type="text"
+            pInputText
+            formControlName="name"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="نام خود را وارد کنید"
+          />
+
+          <label htmlFor="family">نام خانوادگی</label>
+          <input
+            type="text"
+            pInputText
+            formControlName="family"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="نام خانوادگی خود را وارد کنید"
+          />
+
+          <label htmlFor="displayName">نام نمایشی</label>
+          <input
+            type="displayName"
+            pInputText
+            formControlName="displayName"
+            class="tw-w-full tw-rounded-xl tw-text-center"
+            placeholder="نام نمایشی خود را وارد کنید"
+          />
         </div>
         <ng-template pTemplate="footer">
           <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">

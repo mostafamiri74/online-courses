@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { ConfirmedValidator } from './confirmed.validator';
 
 @Component({
   selector: 'app-profile',
@@ -22,17 +23,20 @@ export class ProfileComponent {
   }
 
   private createLoginForm(): void {
-    this.form = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(6)]),
-      ],
-    });
-  }
-
-  get userName() {
-    return this.form.get('userName');
+    this.form = this.fb.group(
+      {
+        email: [{ value: '', disabled: true }],
+        password: ['', Validators.minLength(6)],
+        repeatPassword: [''],
+        mobileNumber: [''],
+        name: [''],
+        family: [''],
+        displayName: [''],
+      },
+      {
+        validator: ConfirmedValidator('password', 'repeatPassword'),
+      }
+    );
   }
 
   get email() {
@@ -41,6 +45,22 @@ export class ProfileComponent {
 
   get password() {
     return this.form.get('password');
+  }
+
+  get repeatPassword() {
+    return this.form.get('repeatPassword');
+  }
+
+  get userName() {
+    return this.form.get('userName');
+  }
+
+  get displayName() {
+    return this.form.get('displayName');
+  }
+
+  get mobileNumber() {
+    return this.form.get('mobileNumber');
   }
 
   public onLoginOrSignup(): void {}

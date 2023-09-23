@@ -5,7 +5,14 @@
   }
 
   .p-card.p-component {
-    border-radius: 1.5rem;
+    border-radius: 0.5rem;
     padding: 25px 50px;
+  }
+
+  .p-card-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }

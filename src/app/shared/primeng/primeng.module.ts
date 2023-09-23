@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
 import { ChartModule } from 'primeng/chart';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { PasswordModule } from 'primeng/password';
 
 const modules = [
   MegaMenuModule,
@@ -20,6 +21,7 @@ const modules = [
   MessagesModule,
   ChartModule,
   ProgressBarModule,
+  PasswordModule,
 ];
 
 @NgModule({

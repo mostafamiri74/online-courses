@@ -1,0 +1,9 @@
+:host ::ng-deep {
+  p-card .p-card.p-component {
+    display: flex;
+
+    .p-card-body {
+      display: flex;
+    }
+  }
+}

@@ -7,3 +7,10 @@
     }
   }
 }
+
+.scrollable-div::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+  background-color: #f5f5f5; /* Set the background color of the scrollbar */
+  position: absolute;
+  left: 0; /* Position the scrollbar on the left of the element */
+}

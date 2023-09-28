@@ -19,21 +19,21 @@ export class CartService {
     this.cartItems.mutate((val: any) => {
       val.push(course);
     });
-    this.course.courses()?.forEach((a) => {
-      if (a.id === course.id) {
-        a.rating.count = a.rating.count - 1;
-      }
-    });
+    // this.course.courses()?.forEach((a) => {
+    //   if (a.id === course?.id) {
+    //     a.rating.count = a.rating.count - 1;
+    //   }
+    // });
   }
 
   removeCourseSignal(id: number) {
     this.cartItems.mutate((val: any) => {
       const course = val.splice(id, 1);
-      this.course.courses()?.forEach((a) => {
-        if (a.id === course[0].id) {
-          a.rating.count = a.rating.count + 1;
-        }
-      });
+      // this.course.courses()?.forEach((a) => {
+      //   if (a.id === course[0].id) {
+      //     a.rating.count = a.rating.count + 1;
+      //   }
+      // });
     });
   }
 }

@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+import { MainWrapperComponent } from './components/main-wrapper/main-wrapper.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [MainWrapperComponent],
   imports: [CommonModule, SharedModule, RouterModule],
   providers: [],
 })

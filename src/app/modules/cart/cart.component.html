@@ -1,7 +1,9 @@
 <section
   class="tw-container tw-flex tw-gap-6 tw-items-center tw-justify-center tw-h-full"
 >
-  <div class="tw-w-2/3 tw-h-full tw-flex tw-card tw-justify-center tw-bg-white">
+  <div
+    class="tw-w-2/3 tw-h-full tw-flex tw-items-center tw-overflow-y-scroll tw-card tw-justify-center tw-bg-white scrollable-div"
+  >
     <ul
       *ngIf="cartService.cartItems().length > 0; else noItem"
       role="list"
@@ -27,12 +29,12 @@
               class="tw-justify-between tw-text-base tw-font-medium tw-text-gray-900 tw-flex"
             >
               <h3>
-                <a href="#">{{ row.title }}</a>
+                <a href="#">{{ row?.title }}</a>
               </h3>
-              <p class="tw-ml-4">{{ row.price | currency }}</p>
+              <p class="tw-ml-4">{{ row?.price | currency }}</p>
             </div>
             <p class="tw-mt-1 tw-text-sm tw-text-gray-500">
-              {{ row.description }}
+              {{ row?.description }}
             </p>
           </div>
           <div
@@ -54,10 +56,21 @@
       </li>
     </ul>
 
-    <ng-template #noItem> <h1>Cart is Empty</h1> </ng-template>
+    <ng-template #noItem> <h2>سبد خرید شما خالی است.</h2> </ng-template>
   </div>
 
   <div
-    class="tw-w-1/3 tw-h-full tw-flex tw-card tw-justify-center tw-bg-white"
-  ></div>
+    class="tw-w-1/3 tw-h-full tw-flex tw-items-center tw-card tw-justify-center tw-bg-white"
+  >
+    <div class="checkout">
+      <div class="total">
+        <div>
+          <div class="Subtotal">مجموع خرید</div>
+          <div class="items">2 items</div>
+        </div>
+        <div class="total-amount">{{ this.cartService.subTotal() }}</div>
+      </div>
+      <button class="button">Checkout</button>
+    </div>
+  </div>
 </section>

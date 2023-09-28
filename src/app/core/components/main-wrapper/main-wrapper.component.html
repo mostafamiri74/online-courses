@@ -1,0 +1,34 @@
+<div class="tw-container tw-mx-auto">
+  <p-megaMenu [model]="items" class="tw-flex tw-py-6">
+    <ng-template pTemplate="start" class="tw-text-3xl">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/primeng.svg"
+        height="40"
+        class="mr-2 tw-ml-36"
+      />
+    </ng-template>
+    <ng-template pTemplate="end">
+      <!-- <input type="text" pInputText placeholder="Search" class="w-full" /> -->
+      <div class="tw-text-end">
+        <ng-container *ngIf="currentUserName; else loginButton">
+          <p-menu #menu [model]="profileItems" [popup]="true"></p-menu>
+
+          <button
+            pButton
+            type="button"
+            (click)="menu.toggle($event)"
+            icon="pi pi-angle-down"
+            iconPos="right"
+            [label]="currentUserName"
+          ></button>
+        </ng-container>
+
+        <ng-template #loginButton>
+          <p-button label="ورود" routerLink="/auth"></p-button>
+        </ng-template>
+      </div>
+    </ng-template>
+  </p-megaMenu>
+
+  <router-outlet></router-outlet>
+</div>

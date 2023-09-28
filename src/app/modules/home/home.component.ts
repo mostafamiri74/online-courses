@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import { MegaMenuItem, MenuItem } from 'primeng/api';
 import {
   faUser,
   faClock,
   faCircleUser,
   faNewspaper,
 } from '@fortawesome/free-regular-svg-icons';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { Observable } from 'rxjs';
-import { UserModel } from 'src/app/core/models/user.interface';
 
 @Component({
   selector: 'app-home',
@@ -21,103 +16,4 @@ export class HomeComponent {
   faClock = faClock;
   faCircleUser = faCircleUser;
   faNewspaper = faNewspaper;
-
-  items: MegaMenuItem[] | undefined;
-  profileItems: MenuItem[] | undefined;
-
-  currentUserName: string = '';
-
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit() {
-    this.items = [
-      {
-        label: 'دوره ها',
-        items: [
-          [
-            {
-              label: 'طراحی وب',
-              items: [
-                { label: 'آموزش HTML' },
-                { label: 'آموزش CSS' },
-                { label: 'آموزش بوت استرپ' },
-                { label: 'آموزش جاوااسکریپت' },
-                { label: 'آموزش انگولار' },
-                { label: 'آموزش ری اکت' },
-                { label: 'آموزش ویو' },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'سخت افزار',
-              items: [{ label: 'اسمبل کامپویتر' }, { label: 'تعمیر قطعات' }],
-            },
-            {
-              label: 'مهندسی داده',
-              items: [
-                { label: 'جمع آوری داده ها' },
-                { label: 'تحلیل داده ها' },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'برنامه نویسی اندروید',
-              items: [{ label: 'کاتلین' }, { label: 'فلاتر' }],
-            },
-            {
-              label: 'سخت افزار موبایل',
-              items: [{ label: 'عیب یابی' }, { label: 'تعمیر قطعات' }],
-            },
-          ],
-        ],
-      },
-      {
-        label: 'وبلاگ',
-      },
-      {
-        label: 'کتابخانه',
-      },
-    ];
-
-    this.profileItems = [
-      {
-        items: [
-          {
-            label: 'داشبورد',
-            icon: 'pi pi-chart-bar',
-            routerLink: ['/panel/dashboard'],
-          },
-          {
-            label: 'دوره های من',
-            icon: 'pi pi-save',
-            routerLink: ['/panel/my-course'],
-          },
-          {
-            label: 'اطلاعات کاربری',
-            icon: 'pi pi-user',
-            routerLink: ['/panel/profile'],
-          },
-          {
-            label: 'خروج',
-            command: () => {
-              this.logout();
-            },
-          },
-        ],
-      },
-    ];
-
-    this.getCurrentUser();
-  }
-
-  private getCurrentUser() {
-    this.currentUserName = this.authService.currentUserName;
-  }
-
-  private logout() {
-    this.authService.logout();
-    this.getCurrentUser();
-  }
 }

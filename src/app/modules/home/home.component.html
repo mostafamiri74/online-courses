@@ -1,75 +1,42 @@
-<div class="tw-container tw-mx-auto">
-  <p-megaMenu [model]="items" class="tw-flex tw-py-6">
-    <ng-template pTemplate="start" class="tw-text-3xl">
+<section class="tw-pt-6 tw-flex">
+  <div class="tw-w-1/2">
+    <h1 class="tw-text-4xl tw-mt-4">بزرگترین مرجع دوره های آنلاین</h1>
+
+    <p class="tw-text-xl tw-my-16 tw-leading-12 tw-word-spacing-1">
+      سون لرن، برگزارکننده دوره‌های آموزشی آنلاین برنامه نویسی و طراحی وب و علم
+      داده، با ۱۳ سال سابقه، از شروع یادگیری تا استخدام در بازار کار در کنار
+      دانشجو است.
+    </p>
+
+    <div class="tw-flex tw-justify-around tw-font-bold">
+      <div class="tw-flex tw-flex-col tw-items-center">
+        <fa-icon [icon]="faUser" class="tw-text-4xl tw-mb-3"></fa-icon>
+        ۱۲ دوره
+      </div>
+      <div class="tw-flex tw-flex-col tw-items-center">
+        <fa-icon [icon]="faClock" class="tw-text-4xl tw-mb-3"></fa-icon>
+        +۳۲,۰۰۰ دقیقه آموزش
+      </div>
+      <div class="tw-flex tw-flex-col tw-items-center">
+        <fa-icon [icon]="faCircleUser" class="tw-text-4xl tw-mb-3"></fa-icon>
+        ۱۲۰۳۸۱ کاربر
+      </div>
+      <div class="tw-flex tw-flex-col tw-items-center">
+        <fa-icon [icon]="faNewspaper" class="tw-text-4xl tw-mb-3"></fa-icon>
+        ۴۶۶ مقاله
+      </div>
+    </div>
+  </div>
+  <div class="tw-w-1/2">
+    <figure class="tw-flex tw-justify-end">
       <img
-        src="https://primefaces.org/cdn/primeng/images/primeng.svg"
-        height="40"
-        class="mr-2 tw-ml-36"
+        src="/assets/images/home/header-human-head.png"
+        alt="human with laptop"
+        width="437"
+        height="460"
+        loading="lazy"
+        class="tw-object-cover human-image"
       />
-    </ng-template>
-    <ng-template pTemplate="end">
-      <!-- <input type="text" pInputText placeholder="Search" class="w-full" /> -->
-      <div class="tw-text-end">
-        <ng-container *ngIf="currentUserName; else loginButton">
-          <p-menu #menu [model]="profileItems" [popup]="true"></p-menu>
-
-          <button
-            pButton
-            type="button"
-            (click)="menu.toggle($event)"
-            icon="pi pi-angle-down"
-            iconPos="right"
-            [label]="currentUserName"
-          ></button>
-        </ng-container>
-
-        <ng-template #loginButton>
-          <p-button label="ورود" routerLink="/auth"></p-button>
-        </ng-template>
-      </div>
-    </ng-template>
-  </p-megaMenu>
-
-  <section class="tw-pt-6 tw-flex">
-    <div class="tw-w-1/2">
-      <h1 class="tw-text-4xl tw-mt-4">بزرگترین مرجع دوره های آنلاین</h1>
-
-      <p class="tw-text-xl tw-my-16 tw-leading-12 tw-word-spacing-1">
-        سون لرن، برگزارکننده دوره‌های آموزشی آنلاین برنامه نویسی و طراحی وب و
-        علم داده، با ۱۳ سال سابقه، از شروع یادگیری تا استخدام در بازار کار در
-        کنار دانشجو است.
-      </p>
-
-      <div class="tw-flex tw-justify-around tw-font-bold">
-        <div class="tw-flex tw-flex-col tw-items-center">
-          <fa-icon [icon]="faUser" class="tw-text-4xl tw-mb-3"></fa-icon>
-          ۱۲ دوره
-        </div>
-        <div class="tw-flex tw-flex-col tw-items-center">
-          <fa-icon [icon]="faClock" class="tw-text-4xl tw-mb-3"></fa-icon>
-          +۳۲,۰۰۰ دقیقه آموزش
-        </div>
-        <div class="tw-flex tw-flex-col tw-items-center">
-          <fa-icon [icon]="faCircleUser" class="tw-text-4xl tw-mb-3"></fa-icon>
-          ۱۲۰۳۸۱ کاربر
-        </div>
-        <div class="tw-flex tw-flex-col tw-items-center">
-          <fa-icon [icon]="faNewspaper" class="tw-text-4xl tw-mb-3"></fa-icon>
-          ۴۶۶ مقاله
-        </div>
-      </div>
-    </div>
-    <div class="tw-w-1/2">
-      <figure class="tw-flex tw-justify-end">
-        <img
-          src="/assets/images/home/header-human-head.png"
-          alt="human with laptop"
-          width="437"
-          height="460"
-          loading="lazy"
-          class="tw-object-cover human-image"
-        />
-      </figure>
-    </div>
-  </section>
-</div>
+    </figure>
+  </div>
+</section>

@@ -36,4 +36,10 @@
   button[label="پروفایل"] .pi {
     color: white;
   }
+
+  .pi-shopping-bag:before {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+  }
 }

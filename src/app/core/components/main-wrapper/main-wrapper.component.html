@@ -9,8 +9,15 @@
     </ng-template>
     <ng-template pTemplate="end">
       <!-- <input type="text" pInputText placeholder="Search" class="w-full" /> -->
-      <div class="tw-text-end">
+      <div class="tw-text-end tw-flex tw-justify-end tw-items-center">
         <ng-container *ngIf="currentUserName; else loginButton">
+          <i
+            class="pi pi-shopping-bag tw-w-12 tw-h-12 tw-bg-white tw-ml-5 tw-relative tw-rounded-full tw-text-center"
+            pBadge
+            [value]="cartService.totalItems().toString()"
+            style="font-size: 1.4rem"
+          ></i>
+
           <p-menu #menu [model]="profileItems" [popup]="true"></p-menu>
 
           <button

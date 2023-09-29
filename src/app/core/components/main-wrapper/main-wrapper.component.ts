@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-main-wrapper',
@@ -14,7 +15,10 @@ export class MainWrapperComponent {
 
   currentUserName: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    public cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.items = [

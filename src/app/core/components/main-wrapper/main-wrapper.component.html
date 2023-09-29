@@ -12,19 +12,25 @@
       <div class="tw-text-end tw-flex tw-justify-end tw-items-center">
         <ng-container *ngIf="currentUserName; else loginButton">
           <i
-            class="pi pi-shopping-bag tw-w-12 tw-h-12 tw-bg-white tw-ml-5 tw-relative tw-rounded-full tw-text-center"
+            class="pi pi-shopping-bag tw-w-12 tw-cursor-pointer tw-h-12 tw-bg-white tw-relative tw-rounded-full tw-text-center"
+            routerLink="/cart"
             pBadge
             [value]="cartService.totalItems().toString()"
             style="font-size: 1.4rem"
           ></i>
 
-          <p-menu #menu [model]="profileItems" [popup]="true"></p-menu>
+          <p-menu
+            #menu
+            [model]="profileItems"
+            [popup]="true"
+            class="tw-mr-4"
+          ></p-menu>
 
           <button
             pButton
             type="button"
             (click)="menu.toggle($event)"
-            icon="pi pi-angle-down"
+            icon="pi pi-angle-down profile-menu"
             iconPos="right"
             [label]="currentUserName"
           ></button>

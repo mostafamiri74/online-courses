@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, delay, find } from 'rxjs';
 import { ICourse } from 'src/app/core/models/course.interface';
 import { CartService } from 'src/app/core/services/cart.service';
@@ -16,14 +16,17 @@ export class CourseComponent {
   constructor(
     private courseService: CourseService,
     private cartService: CartService,
-    private route: ActivatedRoute
-  ) {}
-
-  ngOnInit() {
-    this.getCourseName();
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.events.subscribe(() => this.getCourseDetails());
   }
 
-  getCourseName() {
+  ngOnInit() {
+    this.getCourseDetails();
+  }
+
+  getCourseDetails() {
     const courseName = this.route.parent!.snapshot.url[1].path;
 
     this.courseDetails$ = this.courseService.getCourseDetails(courseName);

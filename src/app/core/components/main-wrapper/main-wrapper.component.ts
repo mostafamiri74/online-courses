@@ -36,7 +36,7 @@ export class MainWrapperComponent {
                   label: 'آموزش جاوااسکریپت',
                   routerLink: ['/course/javascript'],
                 },
-                { label: 'آموزش انگولار', routerLink: ['/course/angular'] },
+                { label: 'آموزش فلاتر', routerLink: ['/course/flutter'] },
                 { label: 'آموزش ری اکت', routerLink: ['/course/react'] },
                 { label: 'آموزش ویو', routerLink: ['/course/vue'] },
               ],
@@ -95,6 +95,7 @@ export class MainWrapperComponent {
           },
           {
             label: 'خروج',
+            icon: 'pi pi-sign-out',
             command: () => {
               this.logout();
             },

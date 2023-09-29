@@ -56,6 +56,16 @@ button {
 .p-component {
   font-family: IRANYekanX;
 }
+
+.p-megamenu.p-megamenu-horizontal
+  .p-megamenu-root-list
+  > .p-menuitem
+  > .p-menuitem-content
+  .p-menuitem-link
+  .p-submenu-icon {
+  margin-right: 0.5rem;
+}
+
 // .p-menu
 //   .p-menuitem:not(.p-highlight):not(.p-disabled)
 //   > .p-menuitem-content:hover

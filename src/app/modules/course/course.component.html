@@ -1,23 +1,18 @@
 <section
   class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full"
 >
-  <ng-container *ngIf="courseDetails$ as course">
+  <ng-container *ngIf="courseDetails$ | async as course">
     <div>
-      <p>{{ (course | async)?.title }}</p>
-      <p>{{ (course | async)?.subTitle }}</p>
-      <p>{{ (course | async)?.description }}</p>
-      <p>{{ (course | async)?.price }}</p>
+      <img [src]="course.image" alt="course-image" />
+      <p>{{ course.title }}</p>
+      <p>{{ course.subTitle }}</p>
+      <p>{{ course.description }}</p>
+      <p>{{ course.price }}</p>
     </div>
 
     <p-button
       (click)="onAddToCart()"
       label="افزودن به سبد خرید"
-      styleClass="p-button"
-    ></p-button>
-
-    <p-button
-      routerLink="/cart"
-      label="سبد خرید"
       styleClass="p-button"
     ></p-button>
   </ng-container>

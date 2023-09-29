@@ -6,6 +6,16 @@
       display: flex;
     }
   }
+
+  p-button button {
+    width: 100%;
+  }
+
+  .pi-times:before {
+    position: absolute;
+    top: 28%;
+    left: 28%;
+  }
 }
 
 .scrollable-div::-webkit-scrollbar {

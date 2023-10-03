@@ -12,6 +12,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 })
 export class CourseComponent {
   courseDetails$!: Observable<ICourse>;
+  disableAddToCart: boolean = false;
 
   constructor(
     private courseService: CourseService,
@@ -30,11 +31,15 @@ export class CourseComponent {
     const courseName = this.route.parent!.snapshot.url[1].path;
 
     this.courseDetails$ = this.courseService.getCourseDetails(courseName);
+
+    this.courseDetails$.subscribe((res) => {
+      this.disableAddToCart = this.cartService.checkExistCourseInCart(res.id);
+    });
   }
 
-  onAddToCart() {
-    this.courseDetails$.subscribe((res: any) => {
-      this.cartService.addCourseSignal(res);
-    });
+  onAddToCart(course: any) {
+    this.cartService.addCourseSignal(course);
+
+    this.disableAddToCart = true;
   }
 }

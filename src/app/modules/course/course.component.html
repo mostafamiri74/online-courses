@@ -11,9 +11,10 @@
     </div>
 
     <p-button
-      (click)="onAddToCart()"
+      (click)="onAddToCart(course)"
       label="افزودن به سبد خرید"
       styleClass="p-button"
+      [disabled]="disableAddToCart"
     ></p-button>
   </ng-container>
 </section>

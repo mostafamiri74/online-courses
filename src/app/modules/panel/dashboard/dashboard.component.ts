@@ -9,30 +9,29 @@ import { LayoutService } from 'src/app/core/services/app.layout.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  items!: MenuItem[];
+  // items!: MenuItem[];
 
   chartData: any;
-
   chartOptions: any;
-
   subscription!: Subscription;
 
+  data: any;
+  data2: any;
+  options1: any;
+  options2: any;
+
   constructor(public layoutService: LayoutService) {
-    this.subscription = this.layoutService.configUpdate$.subscribe(() => {
-      this.initChart();
-    });
+    // this.subscription = this.layoutService.configUpdate$.subscribe(() => {
+    //   this.initChart1();
+    // });
   }
 
   ngOnInit() {
-    this.initChart();
+    this.initChart1();
 
-    this.items = [
-      { label: 'Add New', icon: 'pi pi-fw pi-plus' },
-      { label: 'Remove', icon: 'pi pi-fw pi-minus' },
-    ];
+    this.initChart2();
   }
-
-  initChart() {
+  initChart2() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue(
@@ -40,29 +39,33 @@ export class DashboardComponent {
     );
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-    this.chartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    this.data2 = {
+      labels: ['تیر', 'خرداد', 'اردیبهشت', 'فروردین'],
       datasets: [
         {
-          label: 'First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          backgroundColor: documentStyle.getPropertyValue('--bluegray-700'),
-          borderColor: documentStyle.getPropertyValue('--bluegray-700'),
-          tension: 0.4,
+          label: 'جاوااسکریپت',
+          backgroundColor: documentStyle.getPropertyValue('--yellow-500'),
+          borderColor: documentStyle.getPropertyValue('--yellow-500'),
+          data: [35, 19, 52, 20],
         },
         {
-          label: 'Second Dataset',
-          data: [28, 48, 40, 19, 86, 27, 90],
-          fill: false,
-          backgroundColor: documentStyle.getPropertyValue('--green-600'),
-          borderColor: documentStyle.getPropertyValue('--green-600'),
-          tension: 0.4,
+          label: 'فلاتر',
+          backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+          borderColor: documentStyle.getPropertyValue('--blue-500'),
+          data: [28, 48, 40, 27],
+        },
+        {
+          label: 'انگولار',
+          backgroundColor: documentStyle.getPropertyValue('--red-500'),
+          borderColor: documentStyle.getPropertyValue('--red-500'),
+          data: [21, 18, 20, 7],
         },
       ],
     };
 
-    this.chartOptions = {
+    this.options2 = {
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
       plugins: {
         legend: {
           labels: {
@@ -74,6 +77,9 @@ export class DashboardComponent {
         x: {
           ticks: {
             color: textColorSecondary,
+            font: {
+              weight: 500,
+            },
           },
           grid: {
             color: surfaceBorder,
@@ -87,6 +93,41 @@ export class DashboardComponent {
           grid: {
             color: surfaceBorder,
             drawBorder: false,
+          },
+        },
+      },
+    };
+  }
+
+  initChart1() {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+
+    this.data = {
+      labels: ['جاوااسکریپت', 'فلاتر', 'انگولار'],
+      datasets: [
+        {
+          data: [540, 325, 702],
+          backgroundColor: [
+            documentStyle.getPropertyValue('--yellow-500'),
+            documentStyle.getPropertyValue('--blue-500'),
+            documentStyle.getPropertyValue('--red-500'),
+          ],
+          hoverBackgroundColor: [
+            documentStyle.getPropertyValue('--yellow-400'),
+            documentStyle.getPropertyValue('--blue-400'),
+            documentStyle.getPropertyValue('--red-400'),
+          ],
+        },
+      ],
+    };
+
+    this.options1 = {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            color: textColor,
           },
         },
       },

@@ -1,14 +1,18 @@
-<section
-  class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full"
->
+<section class="tw-container tw-h-full">
   <ng-container *ngIf="courseDetails$ | async as course">
-    <div>
-      <img [src]="course.image" alt="course-image" />
-      <p>{{ course.title }}</p>
-      <p>{{ course.subTitle }}</p>
-      <p>{{ course.description }}</p>
-      <p>{{ course.price }}</p>
+    <div class="tw-flex tw-justify-between tw-items-end">
+      <div class="tw-flex tw-items-end tw-gap-8">
+        <img [src]="course.image" alt="course-image" />
+        <h2 class="tw-text-xl">{{ course.title }}</h2>
+      </div>
+
+      <p class="tw-font-semibold font-number">
+        {{ course.price }} <span class="tw-font-light">تومان</span>
+      </p>
     </div>
+
+    <p class="tw-mt-2 tw-mr-2 tw-mb-8">{{ course.subTitle }}</p>
+    <p class="tw-leading-12 tw-mb-10">{{ course.description }}</p>
 
     <p-button
       (click)="onAddToCart(course)"

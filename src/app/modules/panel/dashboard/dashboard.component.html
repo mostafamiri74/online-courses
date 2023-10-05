@@ -76,12 +76,22 @@
 
   <div class="col-12 xl:col-6 tw-p-4">
     <p-card class="card">
-      <h5>Sales Overview</h5>
+      <h5>پیشرفت ماهیانه</h5>
       <p-chart
-        type="line"
-        [data]="chartData"
-        [options]="chartOptions"
+        type="bar"
+        [data]="data2"
+        height="300"
+        [options]="options2"
       ></p-chart>
+    </p-card>
+  </div>
+
+  <div class="col-12 xl:col-6 tw-p-4">
+    <p-card class="card">
+      <h5>پیشرفت کلی</h5>
+      <div class="card flex justify-content-center">
+        <p-chart type="pie" [data]="data" [options]="options1"></p-chart>
+      </div>
     </p-card>
   </div>
 </div>

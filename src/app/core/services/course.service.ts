@@ -17,13 +17,14 @@ export class CourseService {
   public courses$ = toObservable(this.courses);
 
   getCourseDetails(courseName: string): any {
-    return this.http
-      .get<any[]>('/assets/mock-data/course-list.json')
-      .pipe(
-        map((res: any) =>
-          res.find((s: any) => s.title.toLowerCase().includes(courseName))
-        )
-      );
+    console.log(courseName);
+
+    return this.http.get<any[]>('/assets/mock-data/course-list.json').pipe(
+      map((res: any) =>
+        res.find((s: any) => s.title.toLowerCase().includes(courseName))
+      ),
+      tap((s) => console.log(s))
+    );
 
     // this.courseDetails = computed(() =>
     //   this.courses()?.find((prev: any) => {

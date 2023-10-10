@@ -13,7 +13,7 @@ export class MainWrapperComponent {
   items: MegaMenuItem[] | undefined;
   profileItems: MenuItem[] | undefined;
 
-  currentUserName: string = '';
+  currentUserName: any = '';
 
   constructor(
     private authService: AuthService,
@@ -125,7 +125,9 @@ export class MainWrapperComponent {
   }
 
   private getCurrentUser() {
-    this.currentUserName = this.authService.currentUserName;
+    this.authService.currentUser.subscribe(
+      (user: any) => (this.currentUserName = user.userName)
+    );
   }
 
   private logout() {

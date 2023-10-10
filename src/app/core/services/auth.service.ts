@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserModel } from '../models/user.interface';
+import { IUserModel } from '../models/user.interface';
 import { LocalStorageKey } from '../models/local-storage.model';
 
 @Injectable({
@@ -9,9 +9,15 @@ import { LocalStorageKey } from '../models/local-storage.model';
 })
 export class AuthService {
   private endPoint = '/assets/mock-data/auth/';
-  private currentUserSubject!: BehaviorSubject<any>;
+  public currentUserSubject!: BehaviorSubject<IUserModel>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<IUserModel | any>({
+      userName: localStorage.getItem(LocalStorageKey.UserName) || '',
+      accessToken: localStorage.getItem(LocalStorageKey.AccessToken) || '',
+      refreshToken: localStorage.getItem(LocalStorageKey.RefreshToken) || '',
+    });
+  }
 
   public signup(userSignupInfo: any): Observable<any> {
     return this.http.post<any>(this.endPoint + `sign-up`, userSignupInfo);
@@ -23,27 +29,23 @@ export class AuthService {
 
   public logout(): void {
     localStorage.clear();
-    // this.currentUserSubject.next({} as UserModel);
+    this.currentUserSubject.next({} as IUserModel);
   }
 
-  public get currentUserName(): string {
-    return localStorage.getItem(LocalStorageKey.UserName) || '';
+  public get currentUser(): any {
+    return this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): UserModel {
-    return this.currentUserSubject.value;
-  }
-
-  public set currentUserValue(value: UserModel) {
+  public set currentUser(value: IUserModel) {
     this.currentUserSubject.next(value);
   }
 
-  public setUser(userInfo: UserModel) {
+  public setUser(userInfo: IUserModel) {
     localStorage.setItem(LocalStorageKey.UserName, userInfo.userName);
     localStorage.setItem(LocalStorageKey.AccessToken, userInfo.accessToken);
     localStorage.setItem(LocalStorageKey.RefreshToken, userInfo.refreshToken);
 
-    // this.currentUserValue = userInfo;ss
+    this.currentUser = userInfo;
   }
 
   public get token(): string | null {

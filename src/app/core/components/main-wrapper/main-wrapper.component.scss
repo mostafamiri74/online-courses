@@ -50,4 +50,8 @@
   .p-megamenu .p-menuitem > .p-menuitem-content .p-menuitem-link {
     padding: 1.3rem 1rem;
   }
+
+  li.p-element.p-submenu-header {
+    display: none;
+  }
 }

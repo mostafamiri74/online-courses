@@ -9,12 +9,17 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private messageService: MessageService
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -28,8 +33,15 @@ export class AuthGuard implements CanActivate {
 
     if (state.url === '/auth') {
       if (token) {
-        alert('شما قبلا وارد شده‌اید.');
+        alert('');
         this.router.navigate(['/']);
+
+        this.messageService.add({
+          key: 'br',
+          severity: 'info',
+          detail: 'شما قبلا وارد شده‌اید.',
+        });
+
         return false;
       } else return true;
     } else {
@@ -37,6 +49,13 @@ export class AuthGuard implements CanActivate {
         return true;
       } else {
         this.router.navigate(['/auth']);
+
+        this.messageService.add({
+          key: 'br',
+          severity: 'error',
+          detail: 'لطفا دوباره وارد شوید.',
+        });
+
         return false;
       }
     }

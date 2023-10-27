@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CourseComponent } from './modules/course/course.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CourseComponent],
@@ -22,7 +23,7 @@ import { CourseComponent } from './modules/course/course.component';
     SharedModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

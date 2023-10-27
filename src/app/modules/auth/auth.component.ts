@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -19,9 +20,10 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -85,16 +87,32 @@ export class AuthComponent implements OnInit {
           this.router.navigate(['home']);
         }
 
-        alert('login success');
+        this.messageService.add({
+          key: 'br',
+          severity: 'success',
+          detail: 'شما با موفقیت وارد شدید.',
+        });
       },
-      error: (error) => console.log(error),
+      error: (error) => {
+        console.log(error);
+
+        this.messageService.add({
+          key: 'br',
+          severity: 'success',
+          detail: 'ورود شما با خطا مواجه شد.لطفا دوباره امتحان کنید.',
+        });
+      },
     });
   }
 
   private signup(): void {
     this.authService.signup(this.form.value).subscribe({
       next: (res) => {
-        alert('signup success');
+        this.messageService.add({
+          severity: 'success',
+          summary: '',
+          detail: 'شما با موفقیت ثبتنام کردید.',
+        });
       },
       error: (error) => console.log(error),
     });

@@ -66,6 +66,10 @@ button {
   margin-right: 0.5rem;
 }
 
+button.p-ripple.p-toast-icon-close {
+  background: transparent !important;
+}
+
 // .p-menu
 //   .p-menuitem:not(.p-highlight):not(.p-disabled)
 //   > .p-menuitem-content:hover

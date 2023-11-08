@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, delay, find } from 'rxjs';
+import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
 import { ICourse } from 'src/app/core/models/course.interface';
 import { CartService } from 'src/app/core/services/cart.service';
 import { CourseService } from 'src/app/core/services/course.service';
@@ -17,6 +18,7 @@ export class CourseComponent {
   constructor(
     private courseService: CourseService,
     private cartService: CartService,
+    private messageService: MessageService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -41,5 +43,10 @@ export class CourseComponent {
     this.cartService.addCourseSignal(course);
 
     this.disableAddToCart = true;
+    this.messageService.add({
+      key: 'br',
+      severity: 'success',
+      detail: 'دوره مورد نظر به سبد خرید افزوده شد.',
+    });
   }
 }

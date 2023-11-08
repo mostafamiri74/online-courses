@@ -19,11 +19,11 @@ export class AuthComponent implements OnInit {
   formType: string = 'login';
 
   constructor(
-    private fb: FormBuilder,
+    private messageService: MessageService,
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService,
-    private messageService: MessageService
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -98,7 +98,7 @@ export class AuthComponent implements OnInit {
 
         this.messageService.add({
           key: 'br',
-          severity: 'success',
+          severity: 'error',
           detail: 'ورود شما با خطا مواجه شد.لطفا دوباره امتحان کنید.',
         });
       },
@@ -114,7 +114,15 @@ export class AuthComponent implements OnInit {
           detail: 'شما با موفقیت ثبتنام کردید.',
         });
       },
-      error: (error) => console.log(error),
+      error: (error) => {
+        console.log(error);
+
+        this.messageService.add({
+          key: 'br',
+          severity: 'error',
+          detail: 'ثبتنام شما با خطا مواجه شد.لطفا دوباره امتحان کنید.',
+        });
+      },
     });
   }
 }

@@ -1,10 +1,13 @@
 <div class="tw-container tw-mx-auto">
-  <p-megaMenu [model]="items" class="tw-flex tw-py-6">
+  <p-menubar [model]="items" class="tw-flex tw-py-6">
     <ng-template pTemplate="start" class="tw-text-3xl">
       <a routerLink="/"
-        ><img src="assets/images/logo.svg" class="mr-2 tw-h-11 tw-ml-36"
+        ><img
+          src="assets/images/logo.svg"
+          class="mr-2 tw-h-11 tw-ml-4 lg:tw-ml-36"
       /></a>
     </ng-template>
+
     <ng-template pTemplate="end">
       <!-- <input type="text" pInputText placeholder="Search" class="w-full" /> -->
       <div class="tw-text-end tw-gap-2 tw-flex tw-justify-end tw-items-center">
@@ -34,7 +37,7 @@
         </ng-template>
       </div>
     </ng-template>
-  </p-megaMenu>
+  </p-menubar>
 
   <router-outlet></router-outlet>
 </div>

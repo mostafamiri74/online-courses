@@ -4,12 +4,12 @@
 }
 
 ::ng-deep {
-  .p-megamenu-horizontal .p-megamenu-end {
+  .p-menubar .p-menubar-end {
     margin-left: unset !important;
     flex-grow: 1;
   }
 
-  .p-megamenu {
+  .p-menubar {
     width: 100%;
     display: flex;
     background: #f7f7f7;
@@ -20,12 +20,12 @@
     font-size: 1.1rem;
   }
 
-  .p-megamenu .p-megamenu-panel {
+  .p-menubar .p-menubar-panel {
     border-radius: 0.4rem;
     padding: 1rem;
   }
 
-  .p-megamenu-col-4 {
+  .p-menubar-col-4 {
     padding: 1.6rem !important;
   }
 
@@ -47,11 +47,17 @@
     color: white;
   }
 
-  .p-megamenu .p-menuitem > .p-menuitem-content .p-menuitem-link {
+  .p-menubar .p-menuitem > .p-menuitem-content .p-menuitem-link {
     padding: 1.3rem 1rem;
+    justify-content: space-between;
   }
 
   li.p-element.p-submenu-header {
     display: none;
+  }
+
+  .p-menubar .p-menubar-root-list .p-icon-wrapper,
+  .p-menubar .p-submenu-list .p-menuitem-link .p-icon-wrapper {
+    margin-left: unset !important;
   }
 }

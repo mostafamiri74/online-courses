@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { MegaMenuModule } from 'primeng/megamenu';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuModule } from 'primeng/menu';
@@ -14,7 +13,6 @@ import { BadgeModule } from 'primeng/badge';
 import { ToastModule } from 'primeng/toast';
 
 const modules = [
-  MegaMenuModule,
   ButtonModule,
   MenubarModule,
   MenuModule,

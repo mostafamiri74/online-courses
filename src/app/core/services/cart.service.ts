@@ -1,6 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { CourseService } from './course.service';
-import { retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +30,8 @@ export class CartService {
     //     a.rating.count = a.rating.count - 1;
     //   }
     // });
+
+    this.updateLocalStorage();
   }
 
   removeCourseSignal(id: number) {
@@ -42,6 +43,14 @@ export class CartService {
       //   }
       // });
     });
+
+    this.updateLocalStorage();
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('cartInfo', this.cartItems().toString());
+
+    console.log(this.cartItems().toString());
   }
 
   checkExistCourseInCart(id: number): boolean {

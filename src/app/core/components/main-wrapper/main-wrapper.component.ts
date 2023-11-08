@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./main-wrapper.component.scss'],
 })
 export class MainWrapperComponent {
-  items: MegaMenuItem[] | undefined;
+  items: MenuItem[] | undefined;
   profileItems: MenuItem[] | undefined;
 
   currentUserName: any = '';
@@ -23,72 +22,44 @@ export class MainWrapperComponent {
   ngOnInit() {
     this.items = [
       {
-        label: 'دوره ها',
+        label: 'طراحی وب',
         items: [
-          [
-            {
-              label: 'طراحی وب',
-              items: [
-                { label: 'آموزش HTML', routerLink: ['/course/html'] },
-                {
-                  label: 'آموزش جاوااسکریپت',
-                  routerLink: ['/course/javascript'],
-                },
-                {
-                  label: 'آموزش تایپ اسکریپت',
-                  routerLink: ['/course/typescript'],
-                },
-                { label: 'آموزش ری اکت', routerLink: ['/course/react'] },
-                { label: 'آموزش پایتون', routerLink: ['/course/python'] },
-                { label: 'آموزش وردپرس', routerLink: ['/course/wordpress'] },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'سخت افزار',
-              items: [
-                { label: 'آموزش جاوا', routerLink: ['/course/java'] },
-                { label: 'آموزش Go', routerLink: ['/course/go'] },
-                {
-                  label: 'آموزش ماشین',
-                  routerLink: ['/course/machine-learning'],
-                },
-              ],
-            },
-            {
-              label: 'مهندسی داده',
-              items: [
-                { label: 'آموزش PHP', routerLink: ['/course/php'] },
-                { label: 'آموزش لاراول', routerLink: ['/course/laravel'] },
-              ],
-            },
-          ],
-          [
-            {
-              label: 'برنامه نویسی اندروید',
-              items: [
-                { label: 'آموزش Node js', routerLink: ['/course/nodejs'] },
-                { label: 'آموزش فلاتر', routerLink: ['/course/flutter'] },
-                { label: 'آموزش تحلیل داده', routerLink: ['/course/big-data'] },
-              ],
-            },
-            {
-              label: 'سخت افزار موبایل',
-              items: [
-                { label: 'آموزش شی گرایی', routerLink: ['/course/oop'] },
-
-                { label: 'آموزش لینوکس', routerLink: ['/course/linux'] },
-              ],
-            },
-          ],
+          { label: 'آموزش HTML', routerLink: ['/course/html'] },
+          {
+            label: 'آموزش جاوااسکریپت',
+            routerLink: ['/course/javascript'],
+          },
+          {
+            label: 'آموزش تایپ اسکریپت',
+            routerLink: ['/course/typescript'],
+          },
+          { label: 'آموزش ری اکت', routerLink: ['/course/react'] },
+          { label: 'آموزش پایتون', routerLink: ['/course/python'] },
+          { label: 'آموزش وردپرس', routerLink: ['/course/wordpress'] },
         ],
       },
       {
-        label: 'وبلاگ',
+        label: 'سخت افزار',
+        items: [
+          { label: 'آموزش جاوا', routerLink: ['/course/java'] },
+          { label: 'آموزش Go', routerLink: ['/course/go'] },
+          {
+            label: 'آموزش ماشین',
+            routerLink: ['/course/machine-learning'],
+          },
+        ],
       },
       {
-        label: 'کتابخانه',
+        label: 'مهندسی داده',
+        items: [
+          { label: 'آموزش PHP', routerLink: ['/course/php'] },
+          { label: 'آموزش لاراول', routerLink: ['/course/laravel'] },
+          { label: 'آموزش Node js', routerLink: ['/course/nodejs'] },
+          { label: 'آموزش فلاتر', routerLink: ['/course/flutter'] },
+          { label: 'آموزش تحلیل داده', routerLink: ['/course/big-data'] },
+          { label: 'آموزش شی گرایی', routerLink: ['/course/oop'] },
+          { label: 'آموزش لینوکس', routerLink: ['/course/linux'] },
+        ],
       },
     ];
 

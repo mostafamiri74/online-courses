@@ -7,12 +7,15 @@ import { CartService } from 'src/app/core/services/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  cartItems: any[] = [];
   constructor(public cartService: CartService) {}
 
   ngOnInit() {}
 
   remove(i: number) {
     this.cartService.removeCourseSignal(i);
+  }
+
+  addCoursesToUser() {
+    this.cartService.addUserCourseSignal();
   }
 }

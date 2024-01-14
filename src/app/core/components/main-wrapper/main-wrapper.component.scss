@@ -16,6 +16,14 @@
     border: none;
   }
 
+  .p-menu.p-menu-overlay {
+    left: 80px !important;
+  }
+
+  ul.p-submenu-list {
+    border-radius: 5px;
+  }
+
   .p-menuitem-text {
     font-size: 1.1rem;
   }

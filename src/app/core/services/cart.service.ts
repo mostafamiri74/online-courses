@@ -56,9 +56,11 @@ export class CartService {
   }
 
   addUserCourseSignal() {
-    this.courseService.userCourse = this.cartItems;
+    this.courseService.userCourse.mutate((val) =>
+      val.push(...this.cartItems())
+    );
 
-    this.courseService.userCourse.mutate((val) => console.log(val));
+    this.cartItems.mutate((val) => (val.length = 0));
 
     // this.courseService.userCourse.mutate((val: any) => {
     //   const courseInCart = !!val.find(

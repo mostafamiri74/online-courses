@@ -35,7 +35,7 @@ export class CourseComponent {
     this.courseDetails$ = this.courseService.getCourseDetails(courseName);
 
     this.courseDetails$.subscribe((res) => {
-      this.disableAddToCart = this.cartService.checkExistCourseInCart(res.id);
+      this.disableAddToCart = this.cartService.checkCourseForPurchase(res.id);
     });
   }
 

@@ -17,7 +17,7 @@
 
     <p-button
       (click)="onAddToCart(course)"
-      label="افزودن به سبد خرید"
+      [label]="disableAddToCart ? 'غیر قابل خرید' : 'افزودن به سبد خرید'"
       styleClass="p-button"
       [disabled]="disableAddToCart"
     ></p-button>

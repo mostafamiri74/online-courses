@@ -25,11 +25,6 @@ export class CartService {
 
       !courseInCart ? val.push(course) : null;
     });
-    // this.course.courses()?.forEach((a) => {
-    //   if (a.id === course?.id) {
-    //     a.rating.count = a.rating.count - 1;
-    //   }
-    // });
 
     this.updateLocalStorage();
   }
@@ -44,15 +39,20 @@ export class CartService {
     localStorage.setItem('cartInfo', this.cartItems().toString());
   }
 
-  checkExistCourseInCart(id: number): boolean {
+  checkCourseForPurchase(id: number): boolean {
     let courseInCart = false;
+    let coursePurchased = false;
 
     this.cartItems.mutate(
       (val) =>
         (courseInCart = !!val.find((cousreCart: any) => cousreCart.id === id))
     );
 
-    return courseInCart;
+    this.courseService.userCourse.mutate(
+      (val) => (coursePurchased = !!val.find((course: any) => course.id === id))
+    );
+
+    return courseInCart || coursePurchased;
   }
 
   addUserCourseSignal() {

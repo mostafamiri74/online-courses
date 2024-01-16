@@ -31,13 +31,13 @@
 
             <div class="tw-flex">
               <p
-                class="tw-ml-5 font-number tw-flex tw-items-center tw-font-semibold tw-text-gray-300"
+                class="tw-ml-5 font-number tw-flex tw-items-center tw-font-semibold tw-text-gray-500"
               >
                 {{ (row.price | number : "3.") + "  تومان" }}
               </p>
 
               <i
-                class="pi pi-times tw-w-11 tw-h-11 tw-cursor-pointer tw-bg-gray-300 tw-relative tw-rounded-full tw-text-center"
+                class="pi pi-times tw-w-11 tw-h-11 tw-cursor-pointer tw-bg-gray-100 tw-relative tw-rounded-full tw-text-center"
                 (click)="remove(i)"
                 style="font-size: 1.2rem"
               ></i>

@@ -1,19 +1,19 @@
 <section class="tw-container tw-h-full">
   <ng-container *ngIf="courseDetails$ | async as course">
-    <div class="tw-flex tw-justify-between tw-items-end">
+    <div class="tw-flex tw-justify-between tw-items-end tw-mt-4">
       <div class="tw-flex tw-items-end tw-gap-8">
         <img [src]="course.image" alt="course-image" />
-        <h2 class="tw-text-xl">{{ course.title }}</h2>
+        <h2 class="tw-text-2xl">{{ course.title }}</h2>
       </div>
 
-      <p class="tw-font-semibold font-number">
+      <p class="tw-font-semibold font-number tw-text-lg">
         {{ course.price | number : "3." }}
         <span class="tw-font-light">تومان</span>
       </p>
     </div>
 
-    <p class="tw-mt-2 tw-mr-2 tw-mb-8">{{ course.subTitle }}</p>
-    <p class="tw-leading-12 tw-mb-10">{{ course.description }}</p>
+    <p class="tw-mt-2 tw-mr-20 tw-mb-8">{{ course.subTitle }}</p>
+    <p class="tw-leading-12 tw-mb-16">{{ course.description }}</p>
 
     <p-button
       (click)="onAddToCart(course)"

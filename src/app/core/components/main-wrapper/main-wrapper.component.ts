@@ -76,11 +76,11 @@ export class MainWrapperComponent {
             icon: 'pi pi-save',
             routerLink: ['/panel/my-course'],
           },
-          {
-            label: 'اطلاعات کاربری',
-            icon: 'pi pi-user',
-            routerLink: ['/panel/profile'],
-          },
+          // {
+          //   label: 'اطلاعات کاربری',
+          //   icon: 'pi pi-user',
+          //   routerLink: ['/panel/profile'],
+          // },
           {
             label: 'خروج',
             icon: 'pi pi-sign-out',

@@ -1,5 +1,5 @@
 <section
-  class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full"
+  class="tw-container tw-flex tw-items-center tw-justify-center tw-h-full tw-mt-12"
 >
   <form [formGroup]="form">
     <div class="flex card justify-content-center">
@@ -79,7 +79,7 @@
             <ng-container *ngIf="password?.errors?.['required']">
               لطفا رمز خود را وارد کنید.
             </ng-container>
-            <ng-container *ngIf="password?.errors?.['minLength']">
+            <ng-container *ngIf="password?.errors?.['minlength']">
               رمز وارد شده باید بیشتر از ۶ کاراکتر باشد.
             </ng-container>
           </div>

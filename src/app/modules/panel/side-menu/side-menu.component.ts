@@ -25,11 +25,11 @@ export class SideMenuComponent {
         icon: 'pi pi-fw pi-save',
         routerLink: ['my-course'],
       },
-      {
-        label: 'ویرایش اطلاعات',
-        icon: 'pi pi-fw pi-user',
-        routerLink: ['profile'],
-      },
+      // {
+      //   label: 'ویرایش اطلاعات',
+      //   icon: 'pi pi-fw pi-user',
+      //   routerLink: ['profile'],
+      // },
       {
         label: 'صفحه خانه',
         icon: 'pi pi-fw pi-home',

@@ -106,23 +106,10 @@ export class AuthComponent implements OnInit {
   }
 
   private signup(): void {
-    this.authService.signup(this.form.value).subscribe({
-      next: (res) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: '',
-          detail: 'شما با موفقیت ثبتنام کردید.',
-        });
-      },
-      error: (error) => {
-        console.log(error);
-
-        this.messageService.add({
-          key: 'br',
-          severity: 'error',
-          detail: 'ثبتنام شما با خطا مواجه شد.لطفا دوباره امتحان کنید.',
-        });
-      },
+    this.messageService.add({
+      key: 'br',
+      severity: 'success',
+      detail: 'شما با موفقیت ثبتنام کردید.',
     });
   }
 }

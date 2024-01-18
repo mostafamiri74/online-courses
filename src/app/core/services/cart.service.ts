@@ -15,7 +15,9 @@ export class CartService {
 
   public totalItems = computed(() => this.cartItems().length);
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService) {
+    this.loadCardFromLocalStorage();
+  }
 
   addCourseSignal(course: any) {
     this.cartItems.mutate((val: any) => {
@@ -36,7 +38,15 @@ export class CartService {
   }
 
   updateLocalStorage() {
-    localStorage.setItem('cartInfo', this.cartItems().toString());
+    this.cartItems.mutate((val: any) => {
+      localStorage.setItem('cart_items', JSON.stringify(val));
+    });
+  }
+
+  loadCardFromLocalStorage() {
+    this.cartItems.update(() => [
+      ...JSON.parse(localStorage.getItem('cart_items') || '[]'),
+    ]);
   }
 
   checkCourseForPurchase(id: number): boolean {
@@ -62,14 +72,6 @@ export class CartService {
 
     this.cartItems.mutate((val) => (val.length = 0));
 
-    // this.courseService.userCourse.mutate((val: any) => {
-    //   const courseInCart = !!val.find(
-    //     (cousreCart: any) => cousreCart.id === course.id
-    //   );
-
-    //   !courseInCart ? val.push(course) : null;
-    // });
-
-    // this.updateLocalStorage();
+    localStorage.removeItem('cart_items');
   }
 }

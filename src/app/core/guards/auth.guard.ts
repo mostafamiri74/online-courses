@@ -33,12 +33,11 @@ export class AuthGuard implements CanActivate {
 
     if (state.url === '/auth') {
       if (token) {
-        alert('');
         this.router.navigate(['/']);
 
         this.messageService.add({
           key: 'br',
-          severity: 'info',
+          severity: 'error',
           detail: 'شما قبلا وارد شده‌اید.',
         });
 

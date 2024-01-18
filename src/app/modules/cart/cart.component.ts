@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
@@ -7,7 +10,12 @@ import { CartService } from 'src/app/core/services/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  constructor(public cartService: CartService) {}
+  constructor(
+    public cartService: CartService,
+    private authService: AuthService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {}
 
@@ -16,6 +24,16 @@ export class CartComponent {
   }
 
   addCoursesToUser() {
-    this.cartService.addUserCourseSignal();
+    if (this.authService.token) {
+      this.cartService.addUserCourseSignal();
+    } else {
+      this.router.navigate(['/auth']);
+
+      this.messageService.add({
+        key: 'br',
+        severity: 'info',
+        detail: 'ابتدا باید وارد سایت شوید.',
+      });
+    }
   }
 }

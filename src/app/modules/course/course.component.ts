@@ -39,7 +39,7 @@ export class CourseComponent {
     });
   }
 
-  onAddToCart(course: any) {
+  onAddToCart(course: ICourse) {
     this.cartService.addCourseSignal(course);
 
     this.disableAddToCart = true;

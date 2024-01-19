@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/core/services/app.layout.service';
 
@@ -9,8 +8,6 @@ import { LayoutService } from 'src/app/core/services/app.layout.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  // items!: MenuItem[];
-
   chartData: any;
   chartOptions: any;
   subscription!: Subscription;
@@ -20,11 +17,7 @@ export class DashboardComponent {
   options1: any;
   options2: any;
 
-  constructor(public layoutService: LayoutService) {
-    // this.subscription = this.layoutService.configUpdate$.subscribe(() => {
-    //   this.initChart1();
-    // });
-  }
+  constructor() {}
 
   ngOnInit() {
     this.initChart1();

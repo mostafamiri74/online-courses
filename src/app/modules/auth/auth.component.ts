@@ -76,7 +76,7 @@ export class AuthComponent implements OnInit {
   private login(): void {
     this.authService.login(this.form.value).subscribe({
       next: (res) => {
-        this.authService.setUser(res);
+        this.authService.setUserToLocalStorage(res);
         const params = this.route.snapshot.queryParams;
 
         if (params['redirectURL']) {

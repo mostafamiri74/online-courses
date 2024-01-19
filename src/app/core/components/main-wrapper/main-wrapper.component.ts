@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MenuItem } from 'primeng/api';
 import { CartService } from '../../services/cart.service';
+import { IUser } from '../../models/user.interface';
 
 @Component({
   selector: 'app-main-wrapper',
@@ -9,10 +10,10 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./main-wrapper.component.scss'],
 })
 export class MainWrapperComponent {
-  items: MenuItem[] | undefined;
-  profileItems: MenuItem[] | undefined;
+  items!: MenuItem[];
+  profileItems!: MenuItem[];
 
-  currentUserName: any = '';
+  currentUserName: string = '';
 
   constructor(
     private authService: AuthService,
@@ -76,11 +77,6 @@ export class MainWrapperComponent {
             icon: 'pi pi-save',
             routerLink: ['/panel/my-course'],
           },
-          // {
-          //   label: 'اطلاعات کاربری',
-          //   icon: 'pi pi-user',
-          //   routerLink: ['/panel/profile'],
-          // },
           {
             label: 'خروج',
             icon: 'pi pi-sign-out',
@@ -97,7 +93,7 @@ export class MainWrapperComponent {
 
   private getCurrentUser() {
     this.authService.currentUser.subscribe(
-      (user: any) => (this.currentUserName = user.userName)
+      (user: IUser) => (this.currentUserName = user.userName)
     );
   }
 

@@ -9,19 +9,19 @@ import { LocalStorageKey } from '../models/local-storage.model';
   providedIn: 'root',
 })
 export class CourseService {
-  public courses = toSignal<ICourse[]>(
+  public coursesSig = toSignal<ICourse[]>(
     this.http.get<ICourse[]>('/assets/mock-data/course-list.json')
   );
-  public courses$ = toObservable(this.courses);
+  public courses$ = toObservable(this.coursesSig);
 
-  public userCourse = signal<ICourse[]>([]);
+  public userCourseSig = signal<ICourse[]>([]);
 
   constructor(private http: HttpClient) {
     this.loadUserCourseFromLocalStorage();
   }
 
   loadUserCourseFromLocalStorage() {
-    this.userCourse.update(() => [
+    this.userCourseSig.update(() => [
       ...JSON.parse(localStorage.getItem(LocalStorageKey.UserCourse) || '[]'),
     ]);
   }

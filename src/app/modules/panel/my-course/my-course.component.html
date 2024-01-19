@@ -1,12 +1,13 @@
 <div
   class="grid tw-h-full tw-flex"
   [ngClass]="{
-    'tw-justify-center tw-items-center': courseService.userCourse().length === 0
+    'tw-justify-center tw-items-center':
+      courseService.userCourseSig().length === 0
   }"
 >
-  <ng-container *ngIf="courseService.userCourse().length > 0; else noItem">
+  <ng-container *ngIf="courseService.userCourseSig().length > 0; else noItem">
     <div
-      *ngFor="let course of courseService.userCourse(); let i = index"
+      *ngFor="let course of courseService.userCourseSig(); let i = index"
       class="col-12 lg:col-6 xl:col-3 tw-p-4"
     >
       <div class="flex card justify-content-center">

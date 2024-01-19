@@ -9,6 +9,7 @@ import { LocalStorageKey } from '../models/local-storage.model';
 })
 export class AuthService {
   private endPoint = '/assets/mock-data/auth/';
+
   public currentUserSubject!: BehaviorSubject<IUser>;
 
   constructor(private http: HttpClient) {

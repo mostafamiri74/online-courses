@@ -1,4 +1,4 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal } from '@angular/core';
 import { CourseService } from './course.service';
 import { ICourse } from '../models/course.interface';
 import { LocalStorageKey } from '../models/local-storage.model';
@@ -7,22 +7,24 @@ import { LocalStorageKey } from '../models/local-storage.model';
   providedIn: 'root',
 })
 export class CartService {
-  public cartItems = signal<ICourse[]>([]);
+  public cartItemsSig = signal<ICourse[]>([]);
 
-  public subTotal = computed(() =>
-    this.cartItems().reduce((prev: number, curr: ICourse) => {
+  public subTotalSig: Signal<number> = computed(() =>
+    this.cartItemsSig().reduce((prev: number, curr: ICourse) => {
       return prev + curr.price;
     }, 0)
   );
 
-  public totalItems = computed(() => this.cartItems().length);
+  public totalItemsSig: Signal<number> = computed(
+    () => this.cartItemsSig().length
+  );
 
   constructor(private courseService: CourseService) {
     this.loadCartFromLocalStorage();
   }
 
   addCourseSignal(course: ICourse) {
-    this.cartItems.mutate((val: ICourse[]) => {
+    this.cartItemsSig.mutate((val: ICourse[]) => {
       const existCourseInCart: boolean = !!val.find(
         (cousreCart: ICourse) => cousreCart.id === course.id
       );
@@ -34,19 +36,19 @@ export class CartService {
   }
 
   removeCourseSignal(id: number) {
-    this.cartItems.mutate((val: ICourse[]) => val.splice(id, 1));
+    this.cartItemsSig.mutate((val: ICourse[]) => val.splice(id, 1));
 
     this.updateCartInLocalStorage();
   }
 
   updateCartInLocalStorage() {
-    this.cartItems.mutate((val: ICourse[]) => {
+    this.cartItemsSig.mutate((val: ICourse[]) => {
       localStorage.setItem(LocalStorageKey.CartItems, JSON.stringify(val));
     });
   }
 
   loadCartFromLocalStorage() {
-    this.cartItems.update(() => [
+    this.cartItemsSig.update(() => [
       ...JSON.parse(localStorage.getItem(LocalStorageKey.CartItems) || '[]'),
     ]);
   }
@@ -55,14 +57,14 @@ export class CartService {
     let existCourseInCart = false;
     let coursePurchased = false;
 
-    this.cartItems.mutate(
+    this.cartItemsSig.mutate(
       (val: ICourse[]) =>
         (existCourseInCart = !!val.find(
           (cousreCart: ICourse) => cousreCart.id === id
         ))
     );
 
-    this.courseService.userCourse.mutate(
+    this.courseService.userCourseSig.mutate(
       (val: ICourse[]) =>
         (coursePurchased = !!val.find((course: ICourse) => course.id === id))
     );
@@ -71,13 +73,13 @@ export class CartService {
   }
 
   addUserCourseSignal() {
-    this.courseService.userCourse.mutate((val: ICourse[]) => {
-      val.push(...this.cartItems());
+    this.courseService.userCourseSig.mutate((val: ICourse[]) => {
+      val.push(...this.cartItemsSig());
 
       localStorage.setItem(LocalStorageKey.UserCourse, JSON.stringify(val));
     });
 
-    this.cartItems.mutate((val: ICourse[]) => (val.length = 0));
+    this.cartItemsSig.mutate((val: ICourse[]) => (val.length = 0));
 
     localStorage.removeItem(LocalStorageKey.CartItems);
   }

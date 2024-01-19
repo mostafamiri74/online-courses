@@ -1,13 +1,13 @@
 <section
   class="tw-container tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-6 tw-items-start tw-pt-10 tw-justify-center tw-h-full"
 >
-  <ng-container *ngIf="cartService.cartItems().length > 0; else noItem">
+  <ng-container *ngIf="cartService.cartItemsSig().length > 0; else noItem">
     <div
       class="tw-w-full md:tw-w-2/3 tw-h-full tw-flex tw-items-center tw-card scrollable-div"
     >
       <ul role="list" class="tw-divide-y tw-divide-gray-200 tw-pl-8 tw-w-full">
         <li
-          *ngFor="let row of cartService.cartItems(); let i = index"
+          *ngFor="let row of cartService.cartItemsSig(); let i = index"
           class="tw-p-8 tw-rounded-lg tw-mb-8 tw-border-none tw-flex tw-bg-white"
         >
           <div
@@ -52,7 +52,7 @@
     >
       <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
         <h5>تعداد دوره ها</h5>
-        <span class="font-number"> {{ cartService.totalItems() }} </span>
+        <span class="font-number"> {{ cartService.totalItemsSig() }} </span>
       </div>
 
       <hr />
@@ -60,7 +60,7 @@
       <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
         <h5>قیمت کل</h5>
         <span class="font-number">{{
-          cartService.subTotal() | number : "3."
+          cartService.subTotalSig() | number : "3."
         }}</span>
       </div>
 

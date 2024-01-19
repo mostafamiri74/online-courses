@@ -1,6 +1,7 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { CourseService } from './course.service';
 import { ICourse } from '../models/course.interface';
+import { LocalStorageKey } from '../models/local-storage.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,24 +30,24 @@ export class CartService {
       !existCourseInCart ? val.push(course) : null;
     });
 
-    this.updateLocalStorage();
+    this.updateCartInLocalStorage();
   }
 
   removeCourseSignal(id: number) {
     this.cartItems.mutate((val: ICourse[]) => val.splice(id, 1));
 
-    this.updateLocalStorage();
+    this.updateCartInLocalStorage();
   }
 
-  updateLocalStorage() {
+  updateCartInLocalStorage() {
     this.cartItems.mutate((val: ICourse[]) => {
-      localStorage.setItem('cart_items', JSON.stringify(val));
+      localStorage.setItem(LocalStorageKey.CartItems, JSON.stringify(val));
     });
   }
 
   loadCartFromLocalStorage() {
     this.cartItems.update(() => [
-      ...JSON.parse(localStorage.getItem('cart_items') || '[]'),
+      ...JSON.parse(localStorage.getItem(LocalStorageKey.CartItems) || '[]'),
     ]);
   }
 
@@ -70,12 +71,14 @@ export class CartService {
   }
 
   addUserCourseSignal() {
-    this.courseService.userCourse.mutate((val: ICourse[]) =>
-      val.push(...this.cartItems())
-    );
+    this.courseService.userCourse.mutate((val: ICourse[]) => {
+      val.push(...this.cartItems());
+
+      localStorage.setItem(LocalStorageKey.UserCourse, JSON.stringify(val));
+    });
 
     this.cartItems.mutate((val: ICourse[]) => (val.length = 0));
 
-    localStorage.removeItem('cart_items');
+    localStorage.removeItem(LocalStorageKey.CartItems);
   }
 }

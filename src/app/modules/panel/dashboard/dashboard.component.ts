@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LayoutService } from 'src/app/core/services/app.layout.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -9,6 +9,11 @@
     flex-grow: 1;
   }
 
+  .p-overlay-badge .p-badge {
+    top: 3px;
+    right: 5px;
+  }
+
   .p-menubar {
     width: 100%;
     display: flex;

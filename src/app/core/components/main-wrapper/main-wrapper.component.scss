@@ -14,6 +14,13 @@
     right: 5px;
   }
 
+  p-menubar {
+    position: sticky;
+    background: #f7f7f7;
+    top: 0;
+    z-index: 20;
+  }
+
   .p-menubar {
     width: 100%;
     display: flex;
@@ -22,7 +29,7 @@
   }
 
   .p-menu.p-menu-overlay {
-    left: 80px !important;
+    left: 0px !important;
   }
 
   ul.p-submenu-list {

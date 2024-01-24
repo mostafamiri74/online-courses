@@ -26,6 +26,12 @@ export class CartComponent {
   addCoursesToUser() {
     if (this.authService.token) {
       this.cartService.addUserCourseSignal();
+
+      this.messageService.add({
+        key: 'br',
+        severity: 'success',
+        detail: 'دوره های خریداری شده به لیست دوره های شما افزوده شدند.',
+      });
     } else {
       this.router.navigate(['/auth']);
 

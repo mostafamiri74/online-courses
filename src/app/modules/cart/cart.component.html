@@ -1,5 +1,5 @@
 <section
-  class="tw-container tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-6 tw-items-start tw-pt-10 tw-justify-center tw-h-full"
+  class="tw-container tw-flex tw-flex-col-reverse tw-items-center md:tw-items-start md:tw-flex-row tw-gap-6 tw-pt-10 tw-justify-center"
 >
   <ng-container *ngIf="cartService.cartItemsSig().length > 0; else noItem">
     <div
@@ -48,7 +48,7 @@
     </div>
 
     <div
-      class="tw-w-2/3 md:tw-w-1/3 tw-sticky tw-top-28 tw-flex tw-flex-col tw-gap-8 tw-p-8 tw-rounded-lg tw-bg-white"
+      class="tw-w-2/3 md:tw-w-1/3 md:tw-sticky tw-top-28 tw-flex tw-flex-col tw-gap-8 tw-p-8 tw-rounded-lg tw-bg-white"
     >
       <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
         <h5>تعداد دوره ها</h5>
